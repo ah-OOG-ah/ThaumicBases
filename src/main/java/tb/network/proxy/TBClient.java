@@ -40,6 +40,7 @@ import thaumcraft.client.fx.ParticleEngine;
 import thaumcraft.client.fx.bolt.FXLightningBolt;
 import thaumcraft.client.fx.particles.FXSparkle;
 
+@SuppressWarnings("unused")
 public class TBClient extends TBServer {
 
     @Override
