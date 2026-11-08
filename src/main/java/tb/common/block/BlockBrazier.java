@@ -18,7 +18,6 @@ import net.minecraft.world.World;
 import DummyCore.Utils.MathUtils;
 import tb.common.tile.TileBrazier;
 
-/// TODO implement lit brazier state
 public class BlockBrazier extends BlockContainer {
 
     public static final BlockProperty<Boolean> STATE = new BooleanBlockProperty() {
