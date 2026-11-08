@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=false": { "model": "thaumicbases:block/warding_brazier" },
+    "lit=true": { "model": "thaumicbases:block/lit_warding_brazier" }
+  }
+}

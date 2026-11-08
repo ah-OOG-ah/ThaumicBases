@@ -1,11 +1,15 @@
 package tb.common.block;
 
+import com.gtnewhorizon.gtnhlib.blockstate.core.BlockProperty;
+import com.gtnewhorizon.gtnhlib.blockstate.core.BlockPropertyTrait;
+import com.gtnewhorizon.gtnhlib.blockstate.properties.BooleanBlockProperty;
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
@@ -14,7 +18,41 @@ import net.minecraft.world.World;
 import DummyCore.Utils.MathUtils;
 import tb.common.tile.TileBrazier;
 
+/// TODO implement lit brazier state
 public class BlockBrazier extends BlockContainer {
+
+    public static final BlockProperty<Boolean> STATE = new BooleanBlockProperty() {
+        @Override
+        public String getName() {
+            return "lit";
+        }
+
+        @Override
+        public boolean hasTrait(BlockPropertyTrait trait) {
+            return switch (trait) {
+                case SupportsWorld, WorldMutable, SupportsStacks -> true;
+                default -> false;
+            };
+        }
+
+        @Override
+        public Boolean getValue(IBlockAccess world, int x, int y, int z) {
+            var te = world.getTileEntity(x, y, z);
+            if (te instanceof TileBrazier brazier) return brazier.burning;
+            return false;
+        }
+
+        @Override
+        public void setValue(World world, int x, int y, int z, Boolean value) {
+            var te = world.getTileEntity(x, y, z);
+            if (te instanceof TileBrazier brazier) brazier.burning = value;
+        }
+
+        @Override
+        public Boolean getValue(ItemStack stack) {
+            return false;
+        }
+    };
 
     public BlockBrazier() {
         super(Material.rock);

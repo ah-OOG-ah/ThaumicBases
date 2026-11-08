@@ -1,0 +1,39 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"parent": "thaumicbases:block/warding_brazier",
+	"textures": {
+		"0": "blocks/fire_layer_0",
+		"particle": "blocks/fire_layer_0"
+	},
+	"elements": [
+		{
+			"from": [8, 16, 4],
+			"to": [8, 24, 12],
+			"light_emission": 15,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [16, 0, 0, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 16, 4],
+			"to": [8, 24, 12],
+			"light_emission": 15,
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [16, 0, 0, 16], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

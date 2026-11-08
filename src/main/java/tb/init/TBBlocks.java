@@ -1,5 +1,9 @@
 package tb.init;
 
+import com.gtnewhorizon.gtnhlib.blockstate.core.BlockPropertyState;
+import com.gtnewhorizon.gtnhlib.blockstate.registry.BlockPropertyRegistry;
+import com.gtnewhorizon.gtnhlib.client.model.loading.ModelRegistry;
+import com.gtnewhorizon.gtnhlib.client.model.state.BlockState;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -247,6 +251,7 @@ public class TBBlocks {
 
         BlocksRegistry.registerBlock(campfire, "campfire", core, ItemBlock.class);
         BlocksRegistry.registerBlock(braizer, "brazier", core, ItemBlock.class);
+        BlockPropertyRegistry.registerBlockItemProperty(braizer, BlockBrazier.STATE);
 
         // Deco
         BlocksRegistry.registerBlock(eldritchArk, "eldritchArk", core, ItemBlock.class);
