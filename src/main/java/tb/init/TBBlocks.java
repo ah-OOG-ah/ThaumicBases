@@ -213,6 +213,7 @@ public class TBBlocks {
         .setLightLevel(1);
     public static Block braizer = new BlockBrazier().setBlockName("tb.brazier")
         .setBlockTextureName("cobblestone")
+        // TODO: this should only emit light when the brazier is actually lit
         .setLightLevel(1);
 
     public static void setup() {
