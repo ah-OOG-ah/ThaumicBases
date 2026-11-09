@@ -1,5 +1,6 @@
 package tb.network.proxy;
 
+import com.gtnewhorizon.gtnhlib.client.model.loading.ModelRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -33,6 +34,7 @@ import tb.common.tile.TileEntityDeconstructor;
 import tb.common.tile.TileNodeLinker;
 import tb.common.tile.TileNodeManipulator;
 import tb.common.tile.TileOverchanter;
+import tb.core.TBCore;
 import tb.init.TBBlocks;
 import tb.init.TBItems;
 import thaumcraft.client.fx.ParticleEngine;
@@ -41,6 +43,13 @@ import thaumcraft.client.fx.particles.FXSparkle;
 
 @SuppressWarnings("unused")
 public class TBClient extends TBServer {
+
+    @Override
+    public void preinit() {
+        super.preinit();
+
+        ModelRegistry.registerModid(TBCore.modid);
+    }
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {

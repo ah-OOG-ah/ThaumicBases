@@ -13,6 +13,8 @@ import tb.common.tile.TileOverchanter;
 
 public class TBServer implements IGuiHandler {
 
+    public void preinit() {}
+
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 

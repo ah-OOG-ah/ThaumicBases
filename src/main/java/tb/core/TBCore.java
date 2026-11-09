@@ -72,6 +72,9 @@ public class TBCore {
             e.printStackTrace();
         }
         setupModInfo(event.getModMetadata());
+
+        proxy.preinit();
+
         TBBlocks.setup();
         TBItems.setup();
         TBEnchant.setup();
