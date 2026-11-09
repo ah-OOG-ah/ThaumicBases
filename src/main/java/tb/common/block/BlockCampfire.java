@@ -1,5 +1,9 @@
 package tb.common.block;
 
+import com.gtnewhorizon.gtnhlib.blockstate.core.BlockProperty;
+import com.gtnewhorizon.gtnhlib.blockstate.core.BlockPropertyTrait;
+import com.gtnewhorizon.gtnhlib.blockstate.properties.BooleanBlockProperty;
+import com.gtnewhorizon.gtnhlib.blockstate.properties.IntegerBlockProperty;
 import java.util.List;
 import java.util.Random;
 
@@ -14,9 +18,49 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import DummyCore.Utils.MathUtils;
+import org.joml.Math;
+import tb.common.tile.TileBrazier;
 import tb.common.tile.TileCampfire;
 
 public class BlockCampfire extends BlockContainer {
+
+    public static final BlockProperty<Integer> STATE = new IntegerBlockProperty() {
+        @Override
+        public String getName() {
+            return "stage";
+        }
+
+        @Override
+        public boolean hasTrait(BlockPropertyTrait trait) {
+            return switch (trait) {
+                case SupportsWorld, WorldMutable, SupportsStacks -> true;
+                default -> false;
+            };
+        }
+
+        @Override
+        public Integer getValue(IBlockAccess world, int x, int y, int z) {
+            var meta = world.getBlockMetadata(x, y, z);
+            if (meta > 1) return 2;
+            if (meta > 0) return 1;
+            return 0;
+        }
+
+        @Override
+        public void setValue(World world, int x, int y, int z, Integer value) {
+            final int BLOCK_UPDATE = 0x1;
+            final int SEND_TO_CLIENT = 0x2;
+            world.setBlockMetadataWithNotify(
+                    x, y, z,
+                    Math.clamp(0, 2, value),
+                    BLOCK_UPDATE | SEND_TO_CLIENT);
+        }
+
+        @Override
+        public Integer getValue(ItemStack stack) {
+            return 1;
+        }
+    };
 
     public BlockCampfire() {
         super(Material.wood);
@@ -36,10 +80,6 @@ public class BlockCampfire extends BlockContainer {
 
     public boolean renderAsNormalBlock() {
         return false;
-    }
-
-    public int getRenderType() {
-        return 0x1242fe;
     }
 
     public void randomDisplayTick(World w, int x, int y, int z, Random r) {

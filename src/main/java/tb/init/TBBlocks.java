@@ -251,6 +251,7 @@ public class TBBlocks {
         BlocksRegistry.registerBlock(voidAnvil, "voidAnvil", core, ItemAnvilBlock.class);
 
         BlocksRegistry.registerBlock(campfire, "campfire", core, ItemBlock.class);
+        BlockPropertyRegistry.registerBlockItemProperty(campfire, BlockCampfire.STATE);
         BlocksRegistry.registerBlock(braizer, "brazier", core, ItemBlock.class);
         BlockPropertyRegistry.registerBlockItemProperty(braizer, BlockBrazier.STATE);
 

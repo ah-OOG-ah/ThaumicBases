@@ -16,7 +16,6 @@ import tb.client.RevolverEvents;
 import tb.client.gui.GuiRevolver;
 import tb.client.gui.GuiThaumicAnvil;
 import tb.client.gui.GuiVoidAnvil;
-import tb.client.render.block.CampfireRenderer;
 import tb.client.render.block.ThaumicRelocatorRenderer;
 import tb.client.render.entity.RenderBullet;
 import tb.client.render.item.CastingBraceletRenderer;
@@ -89,7 +88,6 @@ public class TBClient extends TBServer {
         MinecraftForgeClient.registerItemRenderer(TBItems.castingBracelet, new CastingBraceletRenderer());
 
         RenderingRegistry.registerBlockHandler(new ThaumicRelocatorRenderer());
-        RenderingRegistry.registerBlockHandler(new CampfireRenderer());
         RenderingRegistry.registerEntityRenderingHandler(EntityRevolverBullet.class, new RenderBullet());
 
         MinecraftForge.EVENT_BUS.register(new RevolverEvents());
